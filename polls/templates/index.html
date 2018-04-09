@@ -1,8 +1,11 @@
-<html>
-    <head>
-        <title>Study Django</title>
-    </head>
-    <body>
-        Hi
-    </body>
-</html>
+{% extends "base.html" %}
+
+{% block content %}
+<ul>
+{% for question in questions %}
+    <li>
+        <a href="{% url 'detail' question.id %}" title="{{ question.question_text }}">{{ question.question_text }}</a>
+    </li>
+{% endfor %}
+</ul>
+{% endblock content %}
