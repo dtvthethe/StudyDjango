@@ -1,10 +1,49 @@
-<html>
-    <head>
-        <title>{{ title }}</title>
-    </head>
-    <body>
-        {% block content %}
-        
-        {% endblock content %}
-    </body>
+<!DOCTYPE html>
+
+<head>
+	<title>DTVThe - 
+	{% if title is None %}
+	Error
+	{% else %}
+	{{title}}
+	{% endif %}
+	</title>
+	<meta charset="utf-8">
+    <meta name="viewport" content="target-densitydpi=device-dpi, width=device-width, initial-scale=1.0, maximum-scale=1">
+    <meta name="description" content="Simple Brown Background Templates">
+   {% load static %}
+   
+   <link href="{% static 'polls/css/style.css' %}" rel="stylesheet" type="text/css">
+	
+</head>
+<body>
+	
+	<div id="header">
+		<div>
+			<a href="/"><img class="logo" src="{% static 'polls/images/logo.png' %}" width="960" height="100" alt="Simple Website Templates" title="Simple Website Templates"></a>
+			
+			<ul class="navigation">
+				<li>
+					<a class="active" href="/">Home</a>
+				</li>
+				<li>
+					<a href="#">About</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<div id="body">
+		{% block content %}
+		
+		{% endblock content %}
+	</div>
+	
+	<div id="footer">
+		<p class="footer-menu">
+		<p class="footer-menu">
+			<a href="/">Home</a> | <a href="#">About</a>
+		</p>
+		<p class="footer-menu">&copy; 2014 Simple Brown Background</p>
+	</div><!-- end footer -->
+</body>
 </html>
