@@ -14,3 +14,18 @@ class ChoiceForm(ModelForm):
     class Meta:
         model = Choice
         fields = ['choice_text','votes']
+
+class AuthenticateForm(forms.Form):
+    username = forms.CharField(label='Ten dang nhap')
+    password = forms.CharField(widget = forms.PasswordInput)
+
+    def clean(self):
+        cleaned_data = super().clean()
+        username = cleaned_data.get('username')
+        password = cleaned_data.get('password')
+
+        if username is None and password is None:
+            raise forms.ValidationError(
+                    "Tieu de"
+                    "Tieu de 2"
+                )

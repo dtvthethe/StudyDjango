@@ -6,6 +6,7 @@ urlpatterns = [
     url(r'^detail/(?P<question_id>[0-9]+$)',views.detail, name='detail'),
     url(r'^add$',views.add, name='add'),
     url(r'^update/(?P<question_id>[0-9]+$)',views.update, name='update'),
+    url(r'^login$', views.loginview, name='login')
 ]
 
 handler404 = 'polls.views.handler404'

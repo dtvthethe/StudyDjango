@@ -3,10 +3,11 @@ from __future__ import unicode_literals
 
 from django.template import RequestContext
 from django.shortcuts import render, get_list_or_404, get_object_or_404
+from django.contrib.auth import authenticate
 
 from .models import Question, Choice
 
-from .forms import QuestionForm, ChoiceForm
+from .forms import QuestionForm, ChoiceForm, AuthenticateForm
 
 from django.forms.models import inlineformset_factory
 
@@ -70,3 +71,18 @@ def handler404(request):
 
 def handler500(request):
     return render(request, "500.html")
+
+def loginview(request):
+    
+    if request.method == 'POST':
+        form = AuthenticateForm(request.POST)
+        if form.is_valid():
+            is_login_success = authenticate(username=form.cleaned_data.get('username'), password=form.cleaned_data.get('password'))
+            if is_login_success:
+                print('Login successfuly')
+            else:
+                print('Login fail')
+    else:
+        form = AuthenticateForm()
+        
+    return render(request,'login.html',{'form':form})

@@ -1,0 +1,12 @@
+<html>
+    <head>
+        <title>Dang nhap</title>
+    </head>
+    <body>
+        <form action="" method="POST">
+            {% csrf_token %} 
+            {{form.as_table}}
+            <input type="submit" value="Dang nhap" />
+        </form>
+    </body>
+</html>
